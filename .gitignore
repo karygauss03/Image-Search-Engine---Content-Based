@@ -1,2 +1,4 @@
 venv
 bdimage
+static
+__pycache__
