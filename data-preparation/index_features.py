@@ -12,8 +12,33 @@ import argparse
 
 import base64 # convert image to b64 for indexing
 
+elastic_client = Elasticsearch([{'host': 'localhost', 'port': 9200, 'scheme': 'http'}])
+
+# create the "images" index for Elasticsearch if necessary
+
+resp = elastic_client.indices.create(
+    index = "bdimage",
+    body = { "settings" : {
+            "index" : {
+                "number_of_shards" : 1, 
+                "number_of_replicas" : 0
+            }
+            },
+            "mappings": {
+                "obj": {
+                "properties": {
+                    "raw_data" : { "type": "string"},
+                    "image_path": { "type": "string", "index": "not_analyzed"}
+                    }
+                }
+            }
+        },
+    ignore = 400 # ignore 400 already exists code
+    )
+print ("\nElasticsearch create() index response -->", resp)
+
 parser = argparse.ArgumentParser()
-parser.add_argument('--root_path', type=str,
+parser.add_argument('root_path', type=str,
                     default='bdimage/', help='root dir for data')
 parser.add_argument('--split', type=str,
 		    default='Objects', help='images group exp : object or texture')           
@@ -26,12 +51,11 @@ if __name__ == '__main__':
     class_dir = [f for f in listdir(mypath) if join(mypath, f)]
     img_nb = 1
     for clas in class_dir :
-    	classpath = mypath + clas + '/'
-    	img_files = [f for f in listdir(classpath) if isfile(join(classpath, f))]
-    	for _file in img_files:	
-    
-            #print(_file)  # e.g., ./static/data/xxx.jpg
-            image = Image.open(_file)
+        classpath = mypath + clas + '/'
+        img_files = [f for f in listdir(classpath) if isfile(join(classpath, f))]
+        for _file in img_files:	
+            print(_file)  # e.g., ./static/data/xxx.jpg
+            image = Image.open(_file) ##FIX ME PATH
             feature = fe.extract(image)
             feature_path = Path("./static/features") / (_file.stem + ".npy")  # e.g., ./static/feature/xxx.npy
             np.save(feature_path, feature)
