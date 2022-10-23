@@ -1,6 +1,6 @@
 from keras_preprocessing import image
-from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
-from tensorflow.keras.models import Model
+from keras.applications.vgg16 import VGG16, preprocess_input
+from keras.models import Model
 import numpy as np
 
 class FeatureExtractor:
