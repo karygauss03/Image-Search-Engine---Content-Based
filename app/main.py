@@ -40,7 +40,7 @@ def image_query(image: UploadFile = File([]), size: Optional[int] = 10):
             "elastiknn_nearest_neighbors": {
                 "vec": feature_vector,
                 "field": "feature_vector",
-                "similarity": "angular",
+                "similarity": "l2",
                 "model": "exact",
             }
         }
