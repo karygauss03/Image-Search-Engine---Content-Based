@@ -3,3 +3,4 @@ bdimage
 __pycache__
 .ipynb_checkpoints
 tempCodeRunnerFile.py
+.env
