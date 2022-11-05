@@ -5,18 +5,16 @@ import requests
 def main():
     selected_box = st.sidebar.selectbox(
         "Choose an option",
-        ("Home", "Image Retrieval", "About the project")
+        ("Home", "Image Retrieval")
     )
     if selected_box == "Home":
         home()
     if selected_box == "Image Retrieval":
         image_query()
-    if selected_box == "About the project":
-        about()
 
 def home():
     st.title("Content based Image Retrieval")
-    st.subheader("A search engine application...")
+    st.subheader("A search engine application developed by EYA Gourar & KARIM Omrane using VGG16, FastAPI, Streamlit and Elasticsearch ! Enjoy ❤️")
 
 def image_query():
     st.header("Import your image")
@@ -34,9 +32,6 @@ def image_query():
         st.success("🥳 Search results 👇", icon="✅")
         for img in results:
             st.image(img)    
-
-def about():
-    pass
     
 if __name__ == '__main__':
     main()
