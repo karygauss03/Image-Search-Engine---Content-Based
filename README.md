@@ -7,9 +7,9 @@ Welcome to our Image Search Engine 🔮️
 
 - [Project Description](#Project-Description)
 - [Main steps](#Main-steps)
-	- [step 1 : feature extraction](#step-1-:-feature-extraction)
-    - [step 2 : Index vector representations in Elasticsearch](#step-2-:-Index-vector-representations-in-Elasticsearch)
-	- [step 3 : Similarity query](#step-3-:-Similarity-query)
+	- [Step 1 : Feature extraction](#Step-1-:-Feature-extraction)
+    - [Step 2 : Index vector representations in Elasticsearch](#Step-2-:-Index-vector-representations-in-Elasticsearch)
+	- [Step 3 : Similarity query](#Step-3-:-Similarity-query)
 
 - [Tips](#Tips)
 
