@@ -104,9 +104,7 @@ The created features vector can then be stored in the Elasticsearch index.
 ## Step 3 : Similarity query
 Thanks to the predefined functions for vector fields in Elastiknn, getting images with similar style is only a query away.
 
-To measure similarity between vectors we can use cosine similarity as in the predefined function 'Angular'. 
-
-Cosine similarity measures the angle between two vectors.
+To measure similarity between vectors we can use L2 distance as in the predefined function 'l2'. 
 
 ```python
 {
